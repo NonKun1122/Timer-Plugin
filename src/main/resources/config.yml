@@ -1,0 +1,11 @@
+# ตั้งค่าโหมดการแสดงผล: bossbar หรือ scoreboard
+display-mode: bossbar
+
+# สีของ BossBar (PINK, BLUE, RED, GREEN, YELLOW, PURPLE, WHITE)
+bossbar-color: GREEN
+
+# สไตล์ของ BossBar (SOLID, SEGMENTED_6, SEGMENTED_10, SEGMENTED_12, SEGMENTED_20)
+bossbar-style: SOLID
+
+# รูปแบบเวลา (ใช้ %h ชั่วโมง %m นาที %s วินาที)
+time-format: "%h:%m:%s"
