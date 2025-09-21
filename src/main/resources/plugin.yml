@@ -1,0 +1,11 @@
+name: MyTimerPlugin
+main: com.example.mytimer.MyTimerPlugin
+version: 1.0
+api-version: 1.21
+commands:
+  starttimer:
+    description: เริ่มจับเวลา
+  stoptimer:
+    description: หยุดจับเวลา
+  resettimer:
+    description: รีเซ็ตเวลา
