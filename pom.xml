@@ -12,18 +12,24 @@
 
     <name>MyTimerPlugin</name>
     <description>A simple Minecraft timer plugin with BossBar & Scoreboard</description>
+    <url>https://github.com/YOUR-USERNAME/Minecraft-Timer-Plugin</url>
 
     <properties>
+        <!-- ใช้ Java 17 (Minecraft 1.21.8 รองรับ Java 17 ขึ้นไป) -->
         <java.version>17</java.version>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <repositories>
+        <!-- PaperMC API -->
         <repository>
-            <id>spigot-repo</id>
-            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+            <id>papermc</id>
+            <url>https://repo.papermc.io/repository/maven-public/</url>
         </repository>
+
+        <!-- Sonatype (สำรอง) -->
         <repository>
             <id>sonatype</id>
             <url>https://oss.sonatype.org/content/groups/public/</url>
@@ -31,10 +37,10 @@
     </repositories>
 
     <dependencies>
-        <!-- Spigot API for Minecraft 1.21 -->
+        <!-- Paper API (แทน Spigot API) -->
         <dependency>
-            <groupId>org.spigotmc</groupId>
-            <artifactId>spigot-api</artifactId>
+            <groupId>io.papermc.paper</groupId>
+            <artifactId>paper-api</artifactId>
             <version>1.21.1-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
@@ -42,11 +48,22 @@
 
     <build>
         <plugins>
-            <!-- Maven Shade Plugin for building a fat JAR -->
+            <!-- ตั้งค่า Compiler -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                </configuration>
+            </plugin>
+
+            <!-- Maven Shade Plugin สร้าง .jar -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.4</version>
+                <version>3.4.1</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -55,6 +72,7 @@
                         </goals>
                         <configuration>
                             <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <minimizeJar>false</minimizeJar>
                         </configuration>
                     </execution>
                 </executions>
